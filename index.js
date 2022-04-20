@@ -32,11 +32,14 @@ const questions =
 
 function promptUser() {
     inquirer.prompt(questions)
-    // destructure name from the prompt object
+    // destructure manager data from the prompt object
     .then(({ name, id, email, office }) => {
-        const manager = new Manager(name)
-        //employeeRoster.push(manager)
-    }) 
+        const manager = new Manager(name, id, email, office)
+
+        employeeRoster.push(manager)
+        console.log(employeeRoster)
+    })
+    .then()
 }
 
 function promptEmployee() {
