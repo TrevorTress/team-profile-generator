@@ -1,0 +1,35 @@
+body {
+    background-color: grey;
+}
+
+header {
+    background-color: lightgreen;
+    text-align: center;
+}
+
+main {
+    background-color: plum;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.employee-box {
+    padding: 5px 40px;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.employee-box h2 {
+    color: blueviolet;
+    margin: 0;
+    padding: 5px;
+}
+
+.employee-box h3 {
+    color: blueviolet;
+    margin: 0;
+}
