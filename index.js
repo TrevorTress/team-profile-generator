@@ -30,7 +30,7 @@ const managerQuestions =
     },
     {
         type: 'input',
-        name: 'office',
+        name: 'officeNumber',
         message: "What is your office number?"
     }
 ]
@@ -84,9 +84,9 @@ const internQuestions =
 function promptUser() {
     inquirer.prompt(managerQuestions)
     // destructure manager data from the prompt object
-    .then(({ name, id, email, office }) => {
+    .then(({ name, id, email, officeNumber }) => {
         // create a manager w/ that data
-        const manager = new Manager(name, id, email, office)
+        const manager = new Manager(name, id, email, officeNumber)
 
         // push manager to the employee roster and ask them about more employees
         employeeRoster.push(manager)
@@ -120,7 +120,7 @@ function promptIntern() {
 
         // push that intern to the roster and restart the add function
         employeeRoster.push(intern)
-        console.log(employeeRoster)
+        //console.log(employeeRoster)
         employeeAddOption()
     })
 }
@@ -152,7 +152,9 @@ function employeeAddOption() {
         }
         // if no, run function to apply data to html
         if (addition === 'No') {
-            const pageHTML = generatePage();
+            // uses page-template js file to return a variable for fs to use
+            const pageHTML = generatePage(employeeRoster);
+
             fs.writeFile('./index.html', pageHTML, err => {
             if (err) throw new Error(err);
             console.log('Page created! Check out index.html in this directory to see it!');
@@ -163,14 +165,8 @@ function employeeAddOption() {
 
 promptUser()
 
-// WHEN I am prompted for my team members and their information
-// THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-
 // WHEN I click on an email address in the HTML
 // THEN my default email program opens and populates the TO field of the email with the address
 
 // WHEN I click on the GitHub username
 // THEN that GitHub profile opens in a new tab
-
-// WHEN I decide to finish building my team
-// THEN I exit the application, and the HTML is generated
